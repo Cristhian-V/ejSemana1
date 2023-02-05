@@ -21,6 +21,18 @@ const validateUpdate = (req, res, next) =>{
   }
 }
 
+const validateId = async(req, res, next) => {
+  const existId = await Users.findOne({where:{
+    'id': req.params.id
+  }})
+
+  if(!existId){
+    return res.status(400).json('Es id ingesado no exsiste')
+  }else{
+    next()
+  }
+}
+
 module.exports = {
-  validateUpdate
+  validateUpdate, validateId
 }

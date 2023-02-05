@@ -1,5 +1,6 @@
 const express = require('express')
 const {db} = require('../database/config')
+const {repairsRoutes} = require('../routes/repairs.routes')
 const {userRoutes} =require('../routes/users.routes')
 
 
@@ -34,6 +35,7 @@ class Server {
 
   routes(){
     this.app.use(this.path.users, userRoutes)
+    this.app.use(this.path.repairs, repairsRoutes)
   }
 
   listen(){
